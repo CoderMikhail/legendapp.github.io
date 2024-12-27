@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель управления</title>
+    <style>
+        body {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .button {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        .button:hover {
+            transform: scale(1.1);
+        }
+        #nextButton {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <button class="button" onclick="handleClick(1)">Спонсор 1</button>
+    <button class="button" onclick="handleClick(2)">Спонсор 2</button>
+    <button class="button" onclick="handleClick(3)">Спонсор 3</button>
+    <button class="button" onclick="handleClick(4)">Спонсор 4</button>
+    <button class="button" onclick="handleClick(5)">Спонсор 5</button>
+    <button class="button" onclick="handleClick(6)">Спонсор 6</button>
+    <button class="button" id="nextButton" disabled>Перейти дальше</button>
+
+    <script>
+        let clickedButtons = new Set();
+
+        function handleClick(buttonNumber) {
+            clickedButtons.add(buttonNumber);
+            if (clickedButtons.size === 6) {
+                document.getElementById('nextButton').disabled = false;
+                document.getElementById('nextButton').style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+                document.getElementById('nextButton').style.cursor = 'pointer';
+            }
+        }
+
+        document.getElementById('nextButton').addEventListener('click', function() {
+            window.location.href = '/main_menu';
+        });
+    </script>
+</body>
+</html>
